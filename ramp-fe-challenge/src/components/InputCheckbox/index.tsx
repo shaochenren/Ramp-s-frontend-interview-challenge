@@ -7,7 +7,9 @@ export const InputCheckbox: InputCheckboxComponent = ({ id, checked = false, dis
 
   return (
     <div className="RampInputCheckbox--container" data-testid={inputId}>
+      {/* Bug 2 Fix: Added 'htmlFor' attribute to associate the label with the input checkbox */}
       <label
+        htmlFor={inputId}
         className={classNames("RampInputCheckbox--label", {
           "RampInputCheckbox--label-checked": checked,
           "RampInputCheckbox--label-disabled": disabled,
@@ -24,3 +26,8 @@ export const InputCheckbox: InputCheckboxComponent = ({ id, checked = false, dis
     </div>
   )
 }
+
+const moneyFormatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+})
