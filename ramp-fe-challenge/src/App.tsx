@@ -65,7 +65,12 @@ export function App() {
               return
             }
 
-            await loadTransactionsByEmployee(newValue.id)
+            // Check if the selected value is "All Employees"
+            if (newValue.id === EMPTY_EMPLOYEE.id) {
+              await loadAllTransactions() // Load all transactions
+            } else {
+              await loadTransactionsByEmployee(newValue.id) // Load transactions for a specific employee
+            }
           }}
         />
 
